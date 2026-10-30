@@ -3,7 +3,7 @@
 ![grid-thumb](https://github.com/user-attachments/assets/74ff5b33-9906-4cb9-b3fd-c498c394ac63)
 
 **Author:** The French Monkey (TFMSTYLE)  
-**Version:** 1.0.0  
+**Version:** 1.0.1  
 
 ---
 
@@ -388,3 +388,21 @@ Deletes the selected grid object and all its generated layers.
 - **Live Update** is convenient for iteration but may be heavy in dense grids.  
 - Generated grids are composed of standard mesh objects parented to an Empty for easy organization.  
 - Each generated layer can be edited, duplicated, or converted to geometry nodes for advanced use.
+
+---
+
+## Install
+
+Needs Blender 4.2 or later. Get the zip from [tfmstyle.com](https://tfmstyle.com), then in Blender open Edit > Preferences > Get Extensions, open the menu at the top right and pick Install from Disk.
+
+To build the zip yourself, run this in the repo folder:
+
+```bash
+blender --command extension build
+```
+
+---
+
+## License
+
+GPL 3.0 or later. See [LICENSE](LICENSE).
