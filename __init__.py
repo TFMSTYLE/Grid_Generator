@@ -4,7 +4,7 @@
 bl_info = {
     "name": "Grid",
     "author": "The French Monkey",
-    "version": (1, 0, 2),
+    "version": (1, 0, 3),
     "blender": (4, 2, 0),
     "location": "View3D > Sidebar > Grid",
     "description": "Generate parametric grid",
@@ -15,6 +15,11 @@ bl_info = {
 import bpy
 import random
 from math import cos, sin, tau, sqrt, hypot, radians, floor, atan2
+
+try:
+    from . import relay_updater
+except ImportError:  # the Addon Collection has its own updates
+    relay_updater = None
 
 # ---------------------------------------------------------
 # Utils
@@ -1183,6 +1188,8 @@ class VIEW3D_PT_grid_generator(bpy.types.Panel):
     bl_category = "Grid"
 
     def draw(self, context):
+        if relay_updater:
+            relay_updater.draw(self.layout)
         layout = self.layout
         p = context.scene.gridgen_props
         o = context.object
@@ -1326,11 +1333,15 @@ classes = (
 )
 
 def register():
+    if relay_updater:
+        relay_updater.register("blender-grid")
     for c in classes:
         bpy.utils.register_class(c)
     bpy.types.Scene.gridgen_props = bpy.props.PointerProperty(type=GridGenProperties)
 
 def unregister():
+    if relay_updater:
+        relay_updater.unregister()
     for c in reversed(classes):
         bpy.utils.unregister_class(c)
     del bpy.types.Scene.gridgen_props
