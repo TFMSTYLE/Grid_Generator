@@ -4,7 +4,7 @@
 bl_info = {
     "name": "Grid",
     "author": "The French Monkey",
-    "version": (1, 0, 1),
+    "version": (1, 0, 2),
     "blender": (4, 2, 0),
     "location": "View3D > Sidebar > Grid",
     "description": "Generate parametric grid",
@@ -308,7 +308,7 @@ def grid_voronoi_data(cols, rows, step_x, step_y, scale, relax_iter=2):
 
     def sub_fn(f):
         f = max(1, int(f))
-        return grid_voronoi_data(cols * f, rows * f, step_x / f, step_y / f, scale, relax_iter=relax_iter)
+        return grid_voronoi_data(cols * f, rows * f, step_x / f, step_y / f, scale, relax_iter=relax_iter)[:3]
 
     return verts2d, edges, sub_fn, sites
 
