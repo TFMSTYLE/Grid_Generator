@@ -4,7 +4,7 @@
 bl_info = {
     "name": "Grid",
     "author": "The French Monkey",
-    "version": (1, 0, 3),
+    "version": (1, 0, 4),
     "blender": (4, 2, 0),
     "location": "View3D > Sidebar > Grid",
     "description": "Generate parametric grid",
